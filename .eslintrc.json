@@ -1,5 +1,6 @@
 {
   "env": {
+    "commonjs": true,
     "es2021": true,
     "node": true
   },
@@ -17,8 +18,10 @@
     "sourceType": "module"
   },
   "rules": {
+    "camelcase": "off",
     "no-console": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "class-methods-use-this": "off"
   },
   "settings": {
     "import/resolver": {
