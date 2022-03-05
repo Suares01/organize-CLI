@@ -13,7 +13,7 @@ module.exports = class ConfigFile {
 
   async generate() {
     const intialConfigFile = {
-      user: [],
+      users: [],
     };
 
     await fileAsync(`${__dirname}/../config.json`, {
@@ -34,12 +34,28 @@ module.exports = class ConfigFile {
 
     const configObject = JSON.parse(configFile);
 
-    configObject.user.push({
+    configObject.users.push({
       username,
       password,
       created_at,
     });
 
     await writeAsync(this.path, configObject, { jsonIndent: 2 });
+  }
+
+  async getUsers(username = "") {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    if (username) {
+      const user = configObject.users.find((usr) => usr.username === username);
+
+      if (!user) return undefined;
+
+      return user;
+    }
+
+    return configObject.users;
   }
 };
