@@ -1,4 +1,5 @@
 const colors = require("ansi-colors");
+const Table = require("cli-table");
 
 class Logs {
   warn(message) {
@@ -17,6 +18,23 @@ class Logs {
 
   error(message) {
     console.log(`${colors.bgRed.white("Error:")} ${colors.red(message)}`);
+  }
+
+  table(items, { head = [], colWidths = [], many = false }) {
+    const table = new Table({
+      head,
+      colWidths,
+    });
+
+    if (!many) table.push(items);
+
+    if (many) {
+      items.forEach((item) => {
+        table.push(item);
+      });
+    }
+
+    console.log(table.toString());
   }
 }
 
