@@ -1,20 +1,3 @@
 #!/usr/bin/env node
 
-const buildExists = require("fs").existsSync(`${__dirname}/../build`)
-
-if (!buildExists) {
-  const babel = `${__dirname}/../node_modules/.bin/babel`
-  const src = `${__dirname}/../src`
-  const babelrc = `${__dirname}/../.babelrc`
-  const buildFolder = `${__dirname}/../build`
-
-  const buildScript = `${babel} ${src} --extensions \".js,.ts\" --config-file ${babelrc} --out-dir ${buildFolder} --copy-files --no-copy-ignored`
-
-  require("shelljs").exec(buildScript)
-
-  require(`${__dirname}/../build/cli.js`)
-
-  return
-}
-
-require(`${__dirname}/../build/cli.js`)
+require(`${__dirname}/../src/cli`)
