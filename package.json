@@ -1,0 +1,45 @@
+{
+  "name": "organize-cli",
+  "version": "0.0.1",
+  "description": "CLI of organize project, a tool for you to create, open and organize your projects.",
+  "main": "./src/cli.js",
+  "bin": "./bin/organize",
+  "scripts": {
+    "build": "babel src --extensions \".js,.ts\" --out-dir build --copy-files --no-copy-ignored"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Suares01/organize-CLI.git"
+  },
+  "keywords": [
+    "cli",
+    "organize",
+    "projects"
+  ],
+  "author": "Lucas Suares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Suares01/organize-CLI/issues"
+  },
+  "homepage": "https://github.com/Suares01/organize-CLI#readme",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "cli-table": "^0.3.11",
+    "commander": "^9.0.0",
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "shelljs": "^0.8.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  }
+}
