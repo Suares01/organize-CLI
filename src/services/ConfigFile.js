@@ -69,4 +69,14 @@ module.exports = class ConfigFile {
 
     return token;
   }
+
+  async saveToken(token) {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    configObject.token = token;
+
+    await writeAsync(this.path, configObject, { jsonIndent: 2 });
+  }
 };
