@@ -15,6 +15,7 @@ module.exports = class ConfigFile {
     const intialConfigFile = {
       users: [],
       token: "",
+      activeUser: "",
     };
 
     await fileAsync(`${__dirname}/../config.json`, {
@@ -76,6 +77,16 @@ module.exports = class ConfigFile {
     const configObject = JSON.parse(configFile);
 
     configObject.token = token;
+
+    await writeAsync(this.path, configObject, { jsonIndent: 2 });
+  }
+
+  async defineActiveUser(username) {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    configObject.activeUser = username;
 
     await writeAsync(this.path, configObject, { jsonIndent: 2 });
   }
