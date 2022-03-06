@@ -90,4 +90,14 @@ module.exports = class ConfigFile {
 
     await writeAsync(this.path, configObject, { jsonIndent: 2 });
   }
+
+  async getActiveUser() {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    const { activeUser } = configObject;
+
+    return activeUser;
+  }
 };
