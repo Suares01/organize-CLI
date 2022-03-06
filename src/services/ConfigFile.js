@@ -14,6 +14,7 @@ module.exports = class ConfigFile {
   async generate() {
     const intialConfigFile = {
       users: [],
+      token: "",
     };
 
     await fileAsync(`${__dirname}/../config.json`, {
@@ -57,5 +58,15 @@ module.exports = class ConfigFile {
     }
 
     return configObject.users;
+  }
+
+  async getToken() {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    const { token } = configObject;
+
+    return token;
   }
 };
