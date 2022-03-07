@@ -1,6 +1,7 @@
 const { Command } = require("commander");
 const listUser = require("./commands/list:user");
 const newUser = require("./commands/new:user");
+const newProject = require("./commands/new:project");
 
 const cli = new Command()
   .name("organize-cli")
@@ -9,6 +10,7 @@ const cli = new Command()
   )
   .version("0.0.1", "-v, --version", "see the cli version")
   .addCommand(newUser)
-  .addCommand(listUser);
+  .addCommand(listUser)
+  .addCommand(newProject);
 
 cli.parse(process.argv);
