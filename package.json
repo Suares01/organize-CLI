@@ -26,6 +26,7 @@
     "commander": "^9.0.0",
     "figlet": "^1.5.2",
     "fs-jetpack": "^4.3.1",
+    "init-package-json": "^3.0.0",
     "inquirer": "^8.2.0",
     "node-fetch": "2",
     "shelljs": "^0.8.5"
