@@ -27,6 +27,26 @@ class OrganizeAPI {
       typeof error.error === "string"
     );
   }
+
+  isApiTokenError(responseErrorMessage) {
+    const tokenErrorMessages = [
+      "invalid signature",
+      "jwt must be provided",
+      "invalid token",
+      "jwt malformed",
+    ];
+
+    if (
+      responseErrorMessage === tokenErrorMessages[0] ||
+      responseErrorMessage === tokenErrorMessages[1] ||
+      responseErrorMessage === tokenErrorMessages[2] ||
+      responseErrorMessage === tokenErrorMessages[3]
+    ) {
+      return true;
+    }
+
+    return false;
+  }
 }
 
 module.exports = new OrganizeAPI();
