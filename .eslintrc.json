@@ -21,7 +21,8 @@
     "camelcase": "off",
     "no-console": "off",
     "prettier/prettier": "error",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "no-useless-return": "off"
   },
   "settings": {
     "import/resolver": {
