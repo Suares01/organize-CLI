@@ -1,7 +1,7 @@
 const { Command } = require("commander");
 const ConfigFile = require("../services/ConfigFile");
 const transformDate = require("../shared/util/transformDate");
-const log = require("../shared/util/Logs");
+const log = require("../shared/Logs");
 const verifyConfigFile = require("../shared/util/verifyConfigFile");
 
 const listUser = new Command("list:user")

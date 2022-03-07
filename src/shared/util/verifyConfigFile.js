@@ -1,6 +1,6 @@
 const ConfigFile = require("../../services/ConfigFile");
 
-const log = require("./Logs");
+const log = require("../Logs");
 
 const config = new ConfigFile();
 
