@@ -20,6 +20,20 @@ class OrganizeAPI {
     return resJson;
   }
 
+  async get(url, headers) {
+    const response = await fetch(`${this.baseURL}${url}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        ...headers,
+      },
+    });
+
+    const resJson = await response.json();
+
+    return resJson;
+  }
+
   isApiError(error) {
     return !!(
       typeof error.message === "string" &&
