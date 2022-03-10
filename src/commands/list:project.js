@@ -78,6 +78,13 @@ const listProject = new Command("list:project")
       return;
     }
 
+    if (response.length === 0) {
+      log.error(
+        `User "${await config.getActiveUser()}" doesn't have any project`
+      );
+      return;
+    }
+
     const projectsArr = response.map((project) => {
       const { name: projectName, path, created_at } = project;
 
