@@ -4,6 +4,7 @@ const listProject = require("./commands/list:project");
 const newUser = require("./commands/new:user");
 const newProject = require("./commands/new:project");
 const setActive = require("./commands/set:active");
+const open = require("./commands/open");
 
 const cli = new Command()
   .name("organize-cli")
@@ -15,6 +16,7 @@ const cli = new Command()
   .addCommand(listUser)
   .addCommand(newProject)
   .addCommand(listProject)
-  .addCommand(setActive);
+  .addCommand(setActive)
+  .addCommand(open);
 
 cli.parse(process.argv);
