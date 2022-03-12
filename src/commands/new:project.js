@@ -66,7 +66,7 @@ const newProject = new Command("new:project")
     }
 
     try {
-      log.action("generating workspace");
+      log.action("generating workspace...");
       await generateProjectWorkspace(projectPath);
     } catch (err) {
       log.error(err.message);
