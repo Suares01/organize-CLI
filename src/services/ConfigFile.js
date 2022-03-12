@@ -16,6 +16,7 @@ module.exports = class ConfigFile {
       users: [],
       token: "",
       activeUser: "",
+      ide: "code",
     };
 
     await fileAsync(`${__dirname}/../config.json`, {
@@ -99,5 +100,25 @@ module.exports = class ConfigFile {
     const { activeUser } = configObject;
 
     return activeUser;
+  }
+
+  async getIde() {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    const { ide } = configObject;
+
+    return ide;
+  }
+
+  async setIde(ideCli) {
+    const configFile = await readAsync(this.path);
+
+    const configObject = JSON.parse(configFile);
+
+    configObject.ide = ideCli;
+
+    await writeAsync(this.path, configObject, { jsonIndent: 2 });
   }
 };
