@@ -22,7 +22,8 @@
     "no-console": "off",
     "prettier/prettier": "error",
     "class-methods-use-this": "off",
-    "no-useless-return": "off"
+    "no-useless-return": "off",
+    "max-classes-per-file": "off"
   },
   "settings": {
     "import/resolver": {
