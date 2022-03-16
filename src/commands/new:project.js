@@ -15,7 +15,7 @@ const newProject = new Command("new:project")
   .action(async (name) => {
     const projectPath = `${cwd()}/${name}`;
 
-    const config = new ConfigFile();
+    const { token: configToken, user } = new ConfigFile();
 
     await verifyConfigFile();
 
@@ -23,7 +23,7 @@ const newProject = new Command("new:project")
 
     let response;
 
-    token = await config.getToken();
+    token = await configToken.get();
 
     log.action("creating project...");
     response = await api.post(
@@ -40,13 +40,13 @@ const newProject = new Command("new:project")
     if (isApiError(response) && isApiTokenError(response.message)) {
       log.warn(`authentication error - ${response.message}`);
 
-      const username = await config.getActiveUser();
+      const username = await user.getActive();
 
       log.action(`generating a new token for "${username}"...`);
 
       await generateNewToken();
 
-      token = await config.getToken();
+      token = await configToken.get();
 
       response = await api.post(
         "/projects",

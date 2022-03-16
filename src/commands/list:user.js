@@ -15,12 +15,12 @@ const listUser = new Command("list:user")
   .action(async (options) => {
     const { user } = options;
 
-    const config = new ConfigFile();
+    const { user: userConfig } = new ConfigFile();
 
     await verifyConfigFile();
 
     if (user) {
-      const usr = await config.getUsers(user);
+      const usr = await userConfig.get(user);
 
       if (!usr) {
         log.error(`user "${user}" not found`);
@@ -37,7 +37,7 @@ const listUser = new Command("list:user")
       return;
     }
 
-    const users = await config.getUsers();
+    const users = await userConfig.get();
 
     if (users.length === 0) {
       log.error("no users created");

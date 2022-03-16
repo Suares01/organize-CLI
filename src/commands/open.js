@@ -17,11 +17,11 @@ const open = new Command("open")
 
     await verifyConfigFile();
 
-    const config = new ConfigFile();
+    const { token: configToken, user, ide: configIde } = new ConfigFile();
 
     let token;
 
-    token = await config.getToken();
+    token = await configToken.get();
 
     let response;
 
@@ -32,13 +32,13 @@ const open = new Command("open")
     if (isApiError(response) && isApiTokenError(response.message)) {
       log.warn(`authentication error - ${response.message}`);
 
-      const username = await config.getActiveUser();
+      const username = await user.getActive();
 
       log.action(`generating a new token for "${username}"...`);
 
       await generateNewToken();
 
-      token = await config.getToken();
+      token = await configToken.get();
 
       response = await api.get(`/projects/${name}`, {
         "x-access-token": token,
@@ -53,10 +53,10 @@ const open = new Command("open")
     const { path } = response;
 
     if (ide) {
-      await config.setIde(ide);
+      await configIde.set(ide);
     }
 
-    const ideCli = await config.getIde();
+    const ideCli = await configIde.get();
 
     await shell.exec(`${ideCli} ${path}`);
   });

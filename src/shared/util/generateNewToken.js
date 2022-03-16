@@ -4,11 +4,11 @@ const log = require("../Logs");
 const { isApiError } = require("../../services/OrganizeAPI");
 
 const generateNewToken = async () => {
-  const config = new ConfigFile();
+  const { token, user } = new ConfigFile();
 
-  const activeUser = await config.getActiveUser();
+  const activeUser = await user.getActive();
 
-  const { username, password } = await config.getUsers(activeUser);
+  const { username, password } = await user.get(activeUser);
 
   const response = await authUser({
     username,
@@ -20,7 +20,7 @@ const generateNewToken = async () => {
     return;
   }
 
-  await config.saveToken(response.token);
+  await token.save(response.token);
 };
 
 module.exports = generateNewToken;

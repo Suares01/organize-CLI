@@ -18,7 +18,7 @@ const listProject = new Command("list:project")
   .action(async (options) => {
     const { name } = options;
 
-    const config = new ConfigFile();
+    const { token: configToken, user } = new ConfigFile();
 
     await verifyConfigFile();
 
@@ -27,7 +27,7 @@ const listProject = new Command("list:project")
     let response;
 
     if (name) {
-      token = await config.getToken();
+      token = await configToken.get();
 
       response = await api.get(`/projects/${name}`, {
         "x-access-token": token,
@@ -35,7 +35,7 @@ const listProject = new Command("list:project")
     }
 
     if (!name) {
-      token = await config.getToken();
+      token = await configToken.get();
 
       response = await api.get("/projects", {
         "x-access-token": token,
@@ -45,13 +45,13 @@ const listProject = new Command("list:project")
     if (isApiError(response) && isApiTokenError(response.message)) {
       log.warn(`authentication error - ${response.message}`);
 
-      const username = await config.getActiveUser();
+      const username = await user.getActive();
 
       log.action(`generating a new token for "${username}"...`);
 
       await generateNewToken();
 
-      token = await config.getToken();
+      token = await configToken.get();
 
       if (name) {
         response = await api.get(`/projects/${name}`, {
@@ -79,9 +79,7 @@ const listProject = new Command("list:project")
     }
 
     if (response.length === 0) {
-      log.error(
-        `User "${await config.getActiveUser()}" doesn't have any project`
-      );
+      log.error(`User "${await user.getActive()}" doesn't have any project`);
       return;
     }
 

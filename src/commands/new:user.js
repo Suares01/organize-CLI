@@ -13,7 +13,7 @@ const newUser = new Command("new:user")
   .command("new:user <username> <password>")
   .description("createa new user")
   .action(async (username, password) => {
-    const config = new ConfigFile();
+    const { user, token } = new ConfigFile();
 
     await verifyConfigFile();
 
@@ -23,15 +23,6 @@ const newUser = new Command("new:user")
       log.error(response.message);
       return;
     }
-
-    log.action("saving user...");
-    await config.saveUser({
-      username,
-      password,
-      created_at: response.created_at,
-    });
-
-    await config.defineActiveUser(username);
 
     const tokenResponse = await authUser({
       username,
@@ -43,7 +34,16 @@ const newUser = new Command("new:user")
       return;
     }
 
-    await config.saveToken(tokenResponse.token);
+    await token.save(tokenResponse.token);
+
+    log.action("saving user...");
+    await user.save({
+      username,
+      password,
+      created_at: response.created_at,
+    });
+
+    await user.setActive(username);
 
     log.success(`User "${username}" has been created`);
   });

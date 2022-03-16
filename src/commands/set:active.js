@@ -9,11 +9,11 @@ const setActive = new Command("set:active")
   .command("set:active <username>")
   .description("Set some user as active")
   .action(async (username) => {
-    const config = new ConfigFile();
+    const { user: configUser, token } = new ConfigFile();
 
     await verifyConfigFile();
 
-    const user = await config.getUsers(username);
+    const user = await configUser.get(username);
 
     if (!user) {
       log.error("User not found in config file");
@@ -25,21 +25,13 @@ const setActive = new Command("set:active")
       password: user.password,
     });
 
-    if (
-      isApiError(tokenRes) &&
-      tokenRes.message === "username or password incorrect"
-    ) {
-      log.error(`User "${username}" doesn't exists in the database`);
-      return;
-    }
-
     if (isApiError(tokenRes)) {
       log.error(tokenRes.message);
       return;
     }
 
-    await config.defineActiveUser(username);
-    await config.saveToken(tokenRes.token);
+    await configUser.setActive(username);
+    await token.save(tokenRes.token);
 
     log.success(`User "${username}" has been defined as active with success!`);
   });
