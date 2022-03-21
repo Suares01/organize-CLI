@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 class OrganizeAPI {
   constructor() {
-    this.baseURL = "http://0.0.0.0:3000";
+    this.baseURL = "https://api-organize.herokuapp.com";
   }
 
   async post(url, body, headers) {
