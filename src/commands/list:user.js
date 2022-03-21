@@ -1,4 +1,5 @@
 const { Command } = require("commander");
+const colors = require("ansi-colors");
 const ConfigFile = require("../services/ConfigFile");
 const transformDate = require("../shared/util/transformDate");
 const log = require("../shared/Logs");
@@ -19,6 +20,8 @@ const listUser = new Command("list:user")
 
     await verifyConfigFile();
 
+    const activeUser = await userConfig.getActive();
+
     if (user) {
       const usr = await userConfig.get(user);
 
@@ -29,9 +32,16 @@ const listUser = new Command("list:user")
 
       const adjuestedDate = transformDate(usr.created_at);
 
-      log.table([usr.username, adjuestedDate], {
-        head: ["username", "created_at"],
-        colWidths: [20, 15],
+      if (usr.username === activeUser) {
+        log.table([usr.username, adjuestedDate, colors.green("active")], {
+          head: ["username", "created_at", "isActive"],
+        });
+
+        return;
+      }
+
+      log.table([usr.username, adjuestedDate, colors.gray("off")], {
+        head: ["username", "created_at", "isActive"],
       });
 
       return;
@@ -49,12 +59,14 @@ const listUser = new Command("list:user")
 
       const adjuestedDate = transformDate(created_at);
 
-      return [username, adjuestedDate];
+      if (username === activeUser)
+        return [username, adjuestedDate, colors.green("active")];
+
+      return [username, adjuestedDate, colors.gray("off")];
     });
 
     log.table(usersArr, {
-      head: ["username", "created_at"],
-      colWidths: [20, 15],
+      head: ["username", "created_at", "isActive"],
       many: true,
     });
   });
