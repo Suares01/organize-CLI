@@ -4,8 +4,12 @@ const { dirAsync } = require("fs-jetpack");
 const generateProjectWorkspace = async (projectPath) => {
   await dirAsync(projectPath);
 
-  init(projectPath, "", "", (error) => {
-    if (error) throw error;
+  await new Promise((resolve, reject) => {
+    init(projectPath, "", "", (error, data) => {
+      if (error) reject(error);
+
+      resolve(data);
+    });
   });
 };
 
