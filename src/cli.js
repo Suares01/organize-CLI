@@ -7,7 +7,7 @@ const setActive = require("./commands/set:active");
 const open = require("./commands/open");
 
 const cli = new Command()
-  .name("organize-cli")
+  .name("organize")
   .description(
     "CLI of organize project, a tool for you to create, open and organize your projects."
   )
