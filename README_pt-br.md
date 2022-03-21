@@ -42,7 +42,7 @@ Por enquanto está bem simples, mas tem mais por vir...
 Este comando é responsável por criar novos usuários. Você precisa definir seu nome de usuário e senha (é possível criar muitos usuários). Quando o usuário é criado, ele é definido como [ativo](#setactive).
 
 ```shell
-organize-cli new:user <username> <password>
+organize new:user <username> <password>
 ```
 
 _OPÇÕES_:
@@ -58,7 +58,7 @@ _OPÇÕES_:
 Este comando é responsável por listar todos os usuários que você criou.
 
 ```shell
-organize-cli list:user
+organize list:user
 ```
 
 _OPÇÕES_:
@@ -78,7 +78,7 @@ Como mais de um usuário pode ser criado em sua máquina, você pode definir qua
 Este comando é responsável por alterar o usuário ativo.
 
 ```shell
-organize-cli set:active <username>
+organize set:active <username>
 ```
 
 _OPÇÕES_:
@@ -94,7 +94,7 @@ _OPÇÕES_:
 Este comando é responsável por criar novos projetos para um usuário ativo. Basta navegar até o diretório que deseja criar o projeto e executar o comando abaixo.
 
 ```shell
-organize-cli new:project <name>
+organize new:project <name>
 ```
 
 _OPÇÕES_:
@@ -110,7 +110,7 @@ _OPÇÕES_:
 Este comando é responsável por listar todos os projetos do usuário ativo.
 
 ```shell
-organize-cli list:project
+organize list:project
 ```
 
 _OPÇÕES_:
@@ -128,13 +128,13 @@ _OPÇÕES_:
 Este comando é responsável por abrir os projetos em seu IDE. Por padrão, a CLI usa VScode (`code`), mas você pode alterá-lo. Você pode executar esse comando de qualquer diretório da sua máquina.
 
 ```shell
-organize-cli open <projectName>
+organize open <projectName>
 ```
 
 or
 
 ```shell
-organize-cli o <projectName>
+organize o <projectName>
 ```
 
 _OPÇÕES_:
