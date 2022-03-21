@@ -2,7 +2,7 @@
 
 [en](./README.md) | pt-BR
 
-<h1 align="center">Organize CLI</h1>
+<h1 align="center">Organizejs</h1>
 
 <p align="center">Uma CLI para facilitar sua vida na hora de criar novos projetos 💪</p>
 
@@ -10,6 +10,8 @@
 
 <p align="center">
   <a href="#sobre">Sobre</a> •
+  <a href="#instalação">Instalação</a> •
+  <a href="#começando">Começando</a> •
   <a href="#comandos">Comandos</a> •
   <a href="#licença">Licença</a> •
   <a href="#contato">Contato</a>
@@ -26,16 +28,56 @@ Este projeto visa facilitar sua vida na hora de criar e interagir com seus proje
 
 Por enquanto está bem simples, mas tem mais por vir...
 
+## Instalação
+
+Utilize npm ou yarn:
+
+```shell
+npm install --global organizejs
+```
+
+ou
+
+```shell
+yarn global add organizejs
+```
+
+## Começando
+
+Antes de tudo é preciso criar um usuário, utilize o comando abaixo:
+
+```shell
+organize new:user nome senha
+```
+
+Ao criar um usuário ele já é definido como ativo na sua máquina, para entender melhor sobre isso clique [aqui](#setactive).
+
+Agora você já pode começar a criar seus projetos. Navegue até o diretório que deseja criar o projeto e rode o comando abaixo (esse comando já cria automaticamente a pasta do projeto com o nome que foi definido).
+
+```shell
+organize new:project nome_do_projeto
+```
+
+Agora pode utilizar o comando [open](#open--o) para abrir o projeto na sua IDE. **Recomendo que veja sobre o comando para não haver nenhum erro**.
+
+```shell
+organize open nome_do_projeto
+```
+
+Veja sobre os [comandos](#comandos) para entender melhor como a CLI funciona.
+
 ---
 
 <h2 id="comandos">Comandos</h2>
 
-- [new:user](#newuser)
-- [list:user](#listuser)
-- [set:active](#setactive)
-- [new:project](#newproject)
-- [list:project](#listproject)
-- [open | o](#open--o)
+<ul>
+  <li><a href="#newuser">new:user</a></li>
+  <li><a href="#listuser">list:user</a></li>
+  <li><a href="#setactive">set:active</a></li>
+  <li><a href="#newproject">new:project</a></li>
+  <li><a href="#listproject">list:project</a></li>
+  <li><a href="#open--o">open</a></li>
+</ul>
 
 ### new:user
 

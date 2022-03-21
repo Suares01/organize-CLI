@@ -10,6 +10,8 @@ en | [pt-BR](./README_pt-br.md)
 
 <p align="center">
   <a href="#about">About</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#getting-started">Getting Started</a> •
   <a href="#commands">Commands</a> •
   <a href="#license">License</a> •
   <a href="#contact">Contact</a>
@@ -28,14 +30,54 @@ For now it's pretty simple, but there's more to come...
 
 ---
 
+## Installation
+
+Use npm or yarn:
+
+```shell
+npm install --global organizejs
+```
+
+or
+
+```shell
+yarn global add organizejs
+```
+
+## Getting Started
+
+First of all you need to create a user, use the command below:
+
+```shell
+organize new:user name password
+```
+
+When creating a user, it is already defined as active on your machine, to understand it better click [here](#setactive).
+
+Now you can start creating your projects. Navigate to the directory where you want to create the project and run the command below (this command automatically creates the project folder with the name that was defined).
+
+```shell
+organize new:project project_name
+```
+
+Now you can use the command [open](#open--o) to open the project in your IDE. **I recommend that you check the command to avoid any errors**.
+
+```shell
+organize open project_name
+```
+
+See about [commands](#commands) to better understand how the CLI works.
+
 <h2 id="commands">Commands</h2>
 
-- [new:user](#newuser)
-- [list:user](#listuser)
-- [set:active](#setactive)
-- [new:project](#newproject)
-- [list:project](#listproject)
-- [open | o](#open--o)
+<ul>
+  <li><a href="#newuser">new:user</a></li>
+  <li><a href="#listuser">list:user</a></li>
+  <li><a href="#setactive">set:active</a></li>
+  <li><a href="#newproject">new:project</a></li>
+  <li><a href="#listproject">list:project</a></li>
+  <li><a href="#open--o">open</a></li>
+</ul>
 
 ### new:user
 
