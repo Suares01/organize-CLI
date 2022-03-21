@@ -11,7 +11,7 @@ const authUser = require("../shared/util/authUser");
 
 const newUser = new Command("new:user")
   .command("new:user <username> <password>")
-  .description("createa new user")
+  .description("create a new user")
   .action(async (username, password) => {
     const { user, token } = new ConfigFile();
 
