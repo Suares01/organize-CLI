@@ -1,5 +1,5 @@
 {
-  "name": "organizejs",
+  "name": "organizejs-cli",
   "version": "1.0.0",
   "description": "CLI of organize project, a tool for you to create, open and organize your projects.",
   "main": "./src/cli.js",

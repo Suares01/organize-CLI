@@ -33,13 +33,13 @@ Por enquanto está bem simples, mas tem mais por vir...
 Utilize npm ou yarn:
 
 ```shell
-npm install --global organizejs
+npm install --global organizejs-cli
 ```
 
 ou
 
 ```shell
-yarn global add organizejs
+yarn global add organizejs-cli
 ```
 
 ## Começando
